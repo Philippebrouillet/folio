@@ -123,7 +123,7 @@
         line-height: 0.8;
         letter-spacing: -0.05em;
         color: transparent;
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.354);
       }
       .glitch-flash {
         position: fixed;
@@ -297,19 +297,22 @@
         display: inline-block;
         transform: translateY(110%);
       }
+
+      .char {
+        display: inline-block; /* Crucial pour les transformations et le dédoublement */
+        position: relative;
+      }
     </style>
   </head>
   <body class="selection:bg-white selection:text-black">
     <div class="noise"></div>
     <div class="glitch-flash"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
 
     <div id="preloader">
       <div class="loader-name overflow-hidden text-center">
         <span class="block translate-y-full" id="name-phil">Philippe</span>
         <span
-          class="block translate-y-full outline-text opacity-30"
+          class="block translate-y-full outline-text opacity-60"
           id="name-brou"
           >Brouillet</span
         >
@@ -400,7 +403,27 @@
       <div
         class="absolute bottom-12 left-16 text-accent font-mono text-sm uppercase menu-footer opacity-0"
       >
-        Socials — LinkedIn / GitHub
+        Socials —
+        <a
+          href="https://fr.linkedin.com/in/philippe-brouillet-730b43183"
+          target="_blank"
+          class="hover:text-white transition-colors hover-target"
+          >LinkedIn</a
+        >
+        /
+        <a
+          href="https://github.com/philippebrouillet"
+          target="_blank"
+          class="hover:text-white transition-colors hover-target"
+          >GitHub</a
+        >
+        /
+        <a
+          href="https://www.malt.fr/profile/philippebrouillet"
+          target="_blank"
+          class="hover:text-white transition-colors hover-target"
+          >Malt</a
+        >
       </div>
     </div>
 
@@ -415,14 +438,24 @@
           class="relative z-10 w-full pointer-events-none mix-blend-difference mt-10 md:mt-16"
         >
           <h1
-            class="font-display font-extrabold text-[clamp(4rem,10vw,12rem)] leading-[0.8] tracking-tighter uppercase text-left whitespace-nowrap reveal-text"
+            class="font-display font-extrabold text-[clamp(4.5rem,10vw,12rem)] leading-[0.8] tracking-tighter uppercase text-left whitespace-nowrap reveal-text glitched-text-loop"
           >
             <span class="hero-word">Full Stack</span>
           </h1>
         </div>
 
         <div
-          class="relative z-20 flex flex-col justify-between w-full mt-auto gap-12 md:gap-8"
+          class="pl-[12%] pointer-events-none mix-blend-difference w-full md:w-auto text-left md:text-right"
+        >
+          <h1
+            class="font-display font-extrabold text-[clamp(4.5rem,10vw,12rem)] leading-[0.8] tracking-tighter uppercase whitespace-nowrap reveal-text glitched-text-loop"
+          >
+            <span class="hero-word text-accent">Developer</span>
+          </h1>
+        </div>
+
+        <div
+          class="relative z-20 flex flex-col justify-between w-full mt-auto gap-12"
         >
           <div
             class="hero-content-block max-w-[450px] pointer-events-auto opacity-0 translate-y-10 mix-blend-difference pb-2"
@@ -435,9 +468,9 @@
             <p
               class="font-sans text-lg text-white font-light leading-relaxed mb-8"
             >
-              Développeur full stack basé en France.<br />
-              Je vous aide à construire des sites web magnifiques que vos
-              utilisateurs adoreront.
+              Développeur Full Stack basé en France.<br />
+              Je conçois et développe des applications web performantes, fiables
+              et élégantes.
             </p>
             <div class="flex flex-wrap gap-4">
               <div class="magnetic-wrap hover-target">
@@ -458,16 +491,6 @@
                 </a>
               </div>
             </div>
-          </div>
-
-          <div
-            class="pointer-events-none mix-blend-difference w-full md:w-auto text-left md:text-right"
-          >
-            <h1
-              class="font-display font-extrabold text-[clamp(4rem,10vw,12rem)] leading-[0.8] tracking-tighter uppercase whitespace-nowrap reveal-text"
-            >
-              <span class="hero-word text-accent">Developer</span>
-            </h1>
           </div>
         </div>
       </section>
@@ -491,28 +514,64 @@
         </div>
       </section>
 
-      <section id="projets" class="py-40 px-4 md:px-12 bg-dark relative z-10">
+      <section id="projets" class="py-28 px-4 md:px-12 bg-dark relative z-10">
         <div class="flex justify-between items-end mb-24 reveal-text">
           <h2 class="font-display text-5xl md:text-7xl">
-            <span>Selected Works</span>
+            <span>Projets</span>
           </h2>
-          <p class="hidden md:block text-accent font-mono text-sm">(02)</p>
+          <p class="hidden md:block text-accent font-mono text-sm">(03)</p>
         </div>
 
-        <div class="flex flex-col gap-40">
+        <div class="flex flex-col gap-32 md:gap-40">
           <article
-            class="project-item relative w-full flex flex-col md:flex-row items-center gap-12 group hover-target overflow-hidden"
+            class="project-item relative w-full flex flex-col md:flex-row items-center gap-12 group hover-target"
           >
-            <div
+            <a
+              href="https://www.chargepoly.com/fr/plateforme-lucie/"
               class="w-full md:w-3/5 overflow-hidden h-[50vh] md:h-[70vh] relative rounded-lg"
             >
               <img
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop"
+                src="./images/chargepoly_logo.png"
+                crossorigin="anonymous"
+                alt="Projet 2"
+                class="project-img bg-white absolute top-[-15%] left-0 w-full h-[130%] object-contain grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+            </a>
+            <div class="w-full md:w-2/5 md:pr-12 text-left md:text-right">
+              <p class="font-mono text-accent text-sm mb-4">
+                Front-end et Back-end
+              </p>
+              <h3
+                class="font-display text-4xl md:text-6xl font-bold uppercase mb-6"
+              >
+                Chargepoly
+              </h3>
+              <p class="text-accent text-lg font-light leading-relaxed mb-6">
+                Entreprise spécialisée dans la gestion de stations de recharge
+                pour véhicules électriques, offrant des solutions clé en main,
+                de monitoring, de facturation et d'optimisation.
+              </p>
+              <div
+                class="flex md:justify-end gap-4 font-mono text-xs uppercase text-white/50"
+              >
+                <span>Svelte</span><span>Express</span><span>PostgreSQL</span>
+              </div>
+            </div>
+          </article>
+          <article
+            class="project-item relative w-full flex flex-col md:flex-row-reverse items-center gap-12 group hover-target overflow-hidden"
+          >
+            <a
+              href="https://carmen-locale.vercel.app/1145"
+              class="w-full md:w-3/5 overflow-hidden h-[50vh] md:h-[70vh] relative rounded-lg"
+            >
+              <img
+                src="./images/promotion.png"
                 crossorigin="anonymous"
                 alt="Projet 1"
                 class="project-img absolute top-[-15%] left-0 w-full h-[130%] object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
-            </div>
+            </a>
             <div class="w-full md:w-2/5 md:pl-12">
               <p class="font-mono text-accent text-sm mb-4">
                 Front-end & Back-end
@@ -520,48 +579,84 @@
               <h3
                 class="font-display text-4xl md:text-6xl font-bold uppercase mb-6"
               >
-                Digital Retail
+                Carden
               </h3>
               <p class="text-accent text-lg font-light leading-relaxed mb-6">
-                Plateforme e-commerce haute performance. Gestion du panier en
-                temps réel et architecture serveur sécurisée.
+                Plateforme de prise de rendez-vous et de paiement en ligne pour
+                les salons de coiffure, offrant une expérience fluide pour les
+                clients et une gestion efficace pour les propriétaires de
+                salons.
               </p>
               <div class="flex gap-4 font-mono text-xs uppercase text-white/50">
-                <span>Next.js</span><span>Node.js</span><span>Stripe</span>
+                <span>Next.js</span><span>Node.js</span><span>Express.js</span
+                ><span>Stripe</span>
               </div>
             </div>
           </article>
 
           <article
-            class="project-item relative w-full flex flex-col md:flex-row-reverse items-center gap-12 group hover-target"
+            class="project-item relative w-full flex flex-col md:flex-row items-center gap-12 group hover-target overflow-hidden"
           >
-            <div
+            <a
+              href="https://dronedesalpes.fr"
               class="w-full md:w-3/5 overflow-hidden h-[50vh] md:h-[70vh] relative rounded-lg"
             >
               <img
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop"
+                src="./images/drone-des-alpes.jpg"
                 crossorigin="anonymous"
-                alt="Projet 2"
+                alt="Projet 1"
                 class="project-img absolute top-[-15%] left-0 w-full h-[130%] object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
+            </a>
+            <div class="w-full md:w-2/5 md:pl-12">
+              <p class="font-mono text-accent text-sm mb-4">Front-end</p>
+              <h3
+                class="font-display text-4xl md:text-6xl font-bold uppercase mb-6"
+              >
+                Drone des alpes
+              </h3>
+              <p class="text-accent text-lg font-light leading-relaxed mb-6">
+                Entreprise spécialisée dans le nettoyage de toiture et façades
+                par drone, offrant des services innovants et efficaces pour
+                l'entretien des bâtiments.
+              </p>
+              <div class="flex gap-4 font-mono text-xs uppercase text-white/50">
+                <span>Next.js</span><span>Gsap</span>
+              </div>
             </div>
-            <div class="w-full md:w-2/5 md:pr-12 text-left md:text-right">
+          </article>
+
+          <article
+            class="project-item relative w-full flex flex-col md:flex-row-reverse items-center gap-12 group hover-target overflow-hidden"
+          >
+            <a
+              href="https://dentalai.fr/"
+              class="w-full md:w-3/5 overflow-hidden h-[50vh] md:h-[70vh] relative rounded-lg"
+            >
+              <img
+                src="./images/dental.ai.png"
+                crossorigin="anonymous"
+                alt="Projet 1"
+                class="project-img absolute top-[-15%] left-0 w-full h-[130%] object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+            </a>
+            <div class="w-full md:w-2/5 md:pl-12">
               <p class="font-mono text-accent text-sm mb-4">
-                Data Visualization
+                Front-end et Back-end
               </p>
               <h3
                 class="font-display text-4xl md:text-6xl font-bold uppercase mb-6"
               >
-                Banking App
+                DentalAI
               </h3>
               <p class="text-accent text-lg font-light leading-relaxed mb-6">
-                Dashboard financier interactif. Traitement de données lourdes en
-                back-end et rendu fluide en front-end.
+                Application permettant aux dentistes de communiquer avec une
+                intéligence artificielle spécialisée dans le domaine dentaire,
+                offrant des fonctionnalités de diagnostic, et de conseil avec
+                imagerie.
               </p>
-              <div
-                class="flex md:justify-end gap-4 font-mono text-xs uppercase text-white/50"
-              >
-                <span>React</span><span>Express</span><span>PostgreSQL</span>
+              <div class="flex gap-4 font-mono text-xs uppercase text-white/50">
+                <span>Next.js</span><span>Express.js</span>
               </div>
             </div>
           </article>
@@ -572,6 +667,13 @@
         id="experiences"
         class="py-32 px-4 md:px-12 bg-dark relative z-10"
       >
+        <div class="flex justify-between items-end mb-24 reveal-text">
+          <h2 class="font-display text-5xl md:text-7xl">
+            <span>Experiences</span>
+          </h2>
+          <p class="hidden md:block text-accent font-mono text-sm">(03)</p>
+        </div>
+
         <div class="max-w-5xl mx-auto mt-20">
           <div
             class="exp-item flex flex-col md:flex-row justify-between py-12 border-b border-white/10 opacity-0 translate-y-10 hover-target group"
@@ -579,16 +681,17 @@
             <div
               class="md:w-1/3 mb-4 md:mb-0 transition-transform duration-500 group-hover:translate-x-4"
             >
-              <p class="text-accent text-sm font-mono">2023 - Présent</p>
+              <p class="text-accent text-sm font-mono">2023 - à maintenant</p>
               <h4 class="text-3xl font-display font-bold mt-2">
-                Lead Full Stack
+                Développeur Full Stack - Svelte/Nodejs
               </h4>
             </div>
             <div class="md:w-2/3 md:pl-8">
-              <p class="text-xl mb-2 text-white">Creative Studio • Paris</p>
+              <p class="text-xl mb-2 text-white">Chargepoly</p>
               <p class="text-accent font-light leading-relaxed">
-                Conception d'architectures complètes, de l'API robuste jusqu'aux
-                animations WebGL. Stack: Next.js, Node, Three.js.
+                Développement et amélioration de plusieurs applications web de
+                gestion de stations de recharge électrique. Optimisation de la
+                performance et implémentation de nouvelles fonctionnalités.
               </p>
             </div>
           </div>
@@ -598,16 +701,61 @@
             <div
               class="md:w-1/3 mb-4 md:mb-0 transition-transform duration-500 group-hover:translate-x-4"
             >
-              <p class="text-accent text-sm font-mono">2020 - 2023</p>
+              <p class="text-accent text-sm font-mono">2025 - 2026</p>
               <h4 class="text-3xl font-display font-bold mt-2">
-                Développeur Back-End
+                Développeur Full Stack - Next.js/Nodejs
               </h4>
             </div>
             <div class="md:w-2/3 md:pl-8">
-              <p class="text-xl mb-2 text-white">SaaS FinTech • Lyon</p>
+              <p class="text-xl mb-2 text-white">Carden</p>
               <p class="text-accent font-light leading-relaxed">
-                Création de microservices sécurisés et optimisation de requêtes
-                SQL. Stack: Express, PostgreSQL, Redis.
+                Développement Front-end et Back-end d'une application de
+                réservation et de paiement pour une plateforme de prise de
+                rendez-vous de coiffure en ligne. Intégration de Stripe pour la
+                gestion des paiements.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="exp-item flex flex-col md:flex-row justify-between py-12 border-b border-white/10 opacity-0 translate-y-10 hover-target group"
+          >
+            <div
+              class="md:w-1/3 mb-4 md:mb-0 transition-transform duration-500 group-hover:translate-x-4"
+            >
+              <p class="text-accent text-sm font-mono">2025 - 2025</p>
+              <h4 class="text-3xl font-display font-bold mt-2">
+                Développeur Full Stack - React.js/Node.js
+              </h4>
+            </div>
+            <div class="md:w-2/3 md:pl-8">
+              <p class="text-xl mb-2 text-white">Clovis.app</p>
+              <p class="text-accent font-light leading-relaxed">
+                Développment et amélioration d'une application web cross
+                plateforme (capacitor) de gestion de chantier pour
+                professionnels.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="exp-item flex flex-col md:flex-row justify-between py-12 border-b border-white/10 opacity-0 translate-y-10 hover-target group"
+          >
+            <div
+              class="md:w-1/3 mb-4 md:mb-0 transition-transform duration-500 group-hover:translate-x-4"
+            >
+              <p class="text-accent text-sm font-mono">2024 - 2025</p>
+              <h4 class="text-3xl font-display font-bold mt-2">
+                Développeur Full Stack - ReactNative/Nodejs
+              </h4>
+            </div>
+            <div class="md:w-2/3 md:pl-8">
+              <p class="text-xl mb-2 text-white">Digilocx</p>
+              <p class="text-accent font-light leading-relaxed">
+                Développement d'une application mobile de gestion de location de
+                véhicules pour les professionnels du secteur. Implémentation de
+                fonctionnalités de réservation, de gestion de flotte et
+                d'analyses de données pour optimiser les opérations de location.
               </p>
             </div>
           </div>
@@ -630,8 +778,8 @@
             class="skill-row relative border-t border-white/10 px-4 md:px-12 py-4 flex justify-between items-center group hover-target"
           >
             <div class="relative">
-              <span class="outline-text block">React / Vue</span
-              ><span class="fill-text block">React / Vue</span>
+              <span class="outline-text block">React / Svelte</span
+              ><span class="fill-text block">React / Svelte</span>
             </div>
             <span
               class="text-sm font-mono text-accent font-normal tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -642,8 +790,8 @@
             class="skill-row relative border-t border-white/10 px-4 md:px-12 py-4 flex justify-between items-center group hover-target"
           >
             <div class="relative">
-              <span class="outline-text block">Node.js / Bun</span
-              ><span class="fill-text block">Node.js / Bun</span>
+              <span class="outline-text block">Node.js / Express</span
+              ><span class="fill-text block">Node.js / Express</span>
             </div>
             <span
               class="text-sm font-mono text-accent font-normal tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -666,8 +814,8 @@
             class="skill-row relative border-y border-white/10 px-4 md:px-12 py-4 flex justify-between items-center group hover-target"
           >
             <div class="relative">
-              <span class="outline-text block">PostgreSQL</span
-              ><span class="fill-text block">PostgreSQL</span>
+              <span class="outline-text block">PostgreSQL / Prisma</span
+              ><span class="fill-text block">PostgreSQL / Prisma</span>
             </div>
             <span
               class="text-sm font-mono text-accent font-normal tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -684,8 +832,8 @@
         <div
           class="w-full px-12 flex justify-between items-start absolute top-12 font-mono text-accent text-sm uppercase"
         >
-          <span>Disponibilité: Actuelle</span>
-          <span>Localisation: Remote</span>
+          <span>Full Stack Engineer</span>
+          <span>Disponible pour vos projets</span>
         </div>
         <p class="text-accent uppercase tracking-[0.2em] text-sm mb-8 mt-20">
           Démarrons un projet
@@ -700,11 +848,23 @@
           class="absolute bottom-12 w-full px-12 flex justify-between items-center text-sm font-mono uppercase text-accent"
         >
           <div class="flex space-x-6">
-            <a href="#" class="hover-target hover:text-white transition-colors"
+            <a
+              href="https://fr.linkedin.com/in/philippe-brouillet-730b43183"
+              target="_blank"
+              class="hover-target hover:text-white transition-colors"
               >LinkedIn</a
             >
-            <a href="#" class="hover-target hover:text-white transition-colors"
+            <a
+              href="https://github.com/philippebrouillet"
+              target="_blank"
+              class="hover-target hover:text-white transition-colors"
               >GitHub</a
+            >
+            <a
+              href="https://www.malt.fr/profile/philippebrouillet"
+              target="_blank"
+              class="hover-target hover:text-white transition-colors"
+              >Malt</a
             >
           </div>
           <span>&copy; 2022</span>
@@ -765,6 +925,13 @@
       // --- 1. Custom Cursor ---
       const addCustomCursor = () => {
         window.document.body.style.cursor = "none";
+        const dot = document.createElement("div");
+        dot.classList.add("cursor-dot");
+        document.body.appendChild(dot);
+        const ring = document.createElement("div");
+        ring.classList.add("cursor-ring");
+        document.body.appendChild(ring);
+
         const cursorDot = document.querySelector(".cursor-dot");
         const cursorRing = document.querySelector(".cursor-ring");
         let mouseX = window.innerWidth / 2,
@@ -801,6 +968,7 @@
       // Detect if device has a mouse (not touch-only)
       const hasPointer = window.matchMedia("(pointer: fine)").matches;
       if (hasPointer) {
+        console.log("Mouse detected - activating custom cursor");
         addCustomCursor();
       }
 
@@ -975,6 +1143,90 @@
           null,
           "-=0.5"
         );
+
+      // ==========================================
+      // TEXT SPLITTING & SUBTLE GLITCH LOOP
+      // ==========================================
+      // 1. Découpage du texte en lettres (<span>)
+      const heroTitles = document.querySelectorAll(".glitched-text-loop");
+      heroTitles.forEach((title) => {
+        const textElement = title.querySelector(".hero-word");
+        const text = textElement.textContent;
+        textElement.textContent = "";
+
+        text.split("").forEach((char) => {
+          const span = document.createElement("span");
+          span.textContent = char === " " ? "\u00A0" : char; // Préserve les espaces
+          span.className = "char inline-block"; // inline-block est vital pour que GSAP puisse transformer la lettre
+          textElement.appendChild(span);
+        });
+      });
+
+      // 2. La fonction d'animation constante "Cinématique & Ghosting" (Plus lente et prononcée)
+      function startGlitchedTextLoop() {
+        const chars = document.querySelectorAll(".glitched-text-loop .char");
+        if (!chars.length) return;
+
+        function glitchRandomChars() {
+          // RALENTI : On glitch très peu de lettres simultanément (1 ou 3 max)
+          const numToGlitch = Math.floor(Math.random() * 3) + 1;
+
+          for (let i = 0; i < numToGlitch; i++) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            const char = chars[randomIndex];
+
+            if (char.textContent === "\u00A0") continue; // On ignore les espaces
+
+            // Création de l'effet de dédoublement visuel (Anaglyphe 3D)
+            // On tire au sort une variation de couleurs pour le ghosting
+            const ghostColor1 = Math.random() > 0.5 ? "#ff00c1" : "#ff0000"; // Magenta ou Rouge
+            const ghostColor2 = Math.random() > 0.5 ? "#00fff9" : "#0000ff"; // Cyan ou Bleu
+
+            // Animation plus lente et délibérée
+            gsap
+              .timeline()
+              .to(char, {
+                // EFFET : Dédoublement via text-shadow (ghosting)
+                textShadow: `2px 0 ${ghostColor1}, -2px 0 ${ghostColor2}`,
+
+                opacity: 0.7, // Baisse d'opacité modérée
+
+                // RALENTI : Décalages modérés pour rester lisible
+                x: () => (Math.random() - 0.5) * 15, // Décalage latéral de 7px max
+                y: () => (Math.random() - 0.5) * 5, // Décalage vertical léger
+                skewX: () => (Math.random() - 0.5) * 20, // Torsion modérée
+                scaleY: () => Math.random() * 0.2 + 0.9, // Écrasement léger
+
+                duration: 0.08, // Légèrement plus lent pour le "choc" initial
+                ease: "none",
+              })
+              .to(char, {
+                // Retour à la normale
+                textShadow: "0px 0px rgba(0,0,0,0)",
+                opacity: 1,
+                x: 0,
+                y: 0,
+                skewX: 0,
+                scaleY: 1,
+
+                // RALENTI : Le retour à la normale est plus doux
+                duration: 0.2,
+                ease: "power3.out",
+
+                // RALENTI : La lettre reste glitchée un peu plus longtemps
+                delay: Math.random() * 0.15,
+              });
+          }
+
+          // LE SECRET DE LA LENTEUR : On augmente drastiquement le délai entre deux boucles.
+          // Relance la boucle entre 1s et 2.5s (au lieu de 0.1s à 0.8s)
+          // Ça donne le temps de respirer entre deux vibrations.
+          gsap.delayedCall(Math.random() * 1 + 0.5, glitchRandomChars);
+        }
+
+        glitchRandomChars();
+      }
+      startGlitchedTextLoop();
 
       // --- 6. Navigation & Menu ---
       const menuToggle = document.getElementById("menu-toggle");
